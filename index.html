@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">TODO <span class="sr-only">(current)</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mr-5 pr-5" id="collapsibleNavbar">
+    </div>
+  </nav>
+
+  <br>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-6 col-12">
+        <div id="mydiv" class="">
+          <div class="card bg-dark text-white">
+            <h5 class="card-header">My To Do</h5>
+            <div class="card-body">
+              <input type="text" id="idea" class="form-control" placeholder="Add What You Want To Do....">
+              <br>
+              <div class="row">
+                <div class="col-md-4 offset-4">
+                  <button class="btn btn-danger"><span id="add" class="btn1">Add To List</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-2">
+        <div class="card bg-dark text-white">
+          <h5 class="card-header">To Do List</h5>
+          <ol id="myUL" class="text"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function () {
+        var div = this.parentElement;
+        div.style.display = "none";
+      }
+    }
+
+    document.getElementById("add").onclick = function () {
+
+      var i;
+      var node = document.createElement("Li");
+      var text = document.getElementById("idea").value;
+      var textnode = document.createTextNode(text);
+      node.appendChild(textnode);
+      if (text === '') {
+        alert("Add What You Want To Do...!");
+      }
+      else {
+        document.getElementById("myUL").appendChild(node);
+      }
+
+      document.getElementById("idea").value = "";
+
+      var span = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      span.className = "close";
+      span.appendChild(txt);
+      node.appendChild(span);
+
+      for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+          var div = this.parentElement;
+          div.style.display = "none";
+        }
+      }
+
+
+    }
+
+  </script>
+</body>
+
+</html>
